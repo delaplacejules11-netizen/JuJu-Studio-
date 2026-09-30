@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="JuJu Studios — gaming videos, livestreams, Roblox, Minecraft, Fortnite and more.">
+  <meta name="robots" content="index, follow">
+
+  <title>JuJu Studios — Play. Create. Repeat.</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #101014;
+      --panel: #19191f;
+      --text: #f5f4f8;
+      --muted: #aaa8b5;
+      --lime: #dcff79;
+      --purple: #a28aff;
+      --border: #ffffff18;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--lime);
+      outline-offset: 5px;
+    }
+
+    ::selection {
+      background: var(--lime);
+      color: var(--bg);
+    }
+
+    .wrap {
+      width: min(1200px, 90%);
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #101014eb;
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .logo-mark {
+      display: grid;
+      place-items: center;
+      width: 37px;
+      height: 37px;
+      background: var(--lime);
+      color: var(--bg);
+      border-radius: 9px;
+      font-size: 25px;
+      font-weight: 800;
+      transform: rotate(-8deg);
+    }
+
+    .wordmark {
+      font: 800 27px/.85 "Barlow Condensed", sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .wordmark small {
+      display: block;
+      font: 500 9px "DM Sans", sans-serif;
+      letter-spacing: 5px;
+      margin-top: 7px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links > a:not(.button) {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links > a:hover {
+      color: var(--lime);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 23px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background: var(--lime);
+      color: #15170e;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #e7ffa3;
+    }
+
+    .button.secondary {
+      background: #ffffff06;
+      border-color: #ffffff28;
+      color: white;
+    }
+
+    .button.secondary:hover {
+      background: #ffffff12;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: white;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 9px 12px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 80px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      right: -180px;
+      top: -150px;
+      z-index: -1;
+      background: radial-gradient(circle, #7950df25, transparent 65%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 16px #dcff7950;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font: 800 clamp(70px, 8.8vw, 122px)/.88 "Barlow Condensed", sans-serif;
+      letter-spacing: -2px;
+      margin: 26px 0;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      color: var(--lime);
+    }
+
+    .hero-copy > p {
+      max-width: 410px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .microcopy {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .mini-icons {
+      display: flex;
+    }
+
+    .mini-icons span {
+      display: grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      border-radius: 50%;
+      background: #292532;
+      border: 2px solid var(--bg);
+      margin-right: -5px;
+      color: var(--purple);
+    }
+
+    /* HERO ART */
+
+    .hero-art {
+      min-height: 470px;
+      position: relative;
+      isolation: isolate;
+      border-radius: 18px;
+      background: #a28aff;
+      background-image:
+        linear-gradient(#ffffff16 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff16 1px, transparent 1px);
+      background-size: 38px 38px;
+      display: grid;
+      place-items: center;
+      transform: rotate(2deg);
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid #ffffff40;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .art-title {
+      position: absolute;
+      top: 29px;
+      left: 27px;
+      color: #332357;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .controller {
+      width: 94%;
+      filter: drop-shadow(0 25px 15px #38226550);
+      transform: rotate(-17deg);
+    }
+
+    .sticker {
+      position: absolute;
+      background: var(--lime);
+      color: #202214;
+      padding: 14px 18px;
+      font: 800 25px "Barlow Condensed", sans-serif;
+      box-shadow: 4px 5px 0 #22202a;
+    }
+
+    .sticker.one {
+      right: -17px;
+      top: 65px;
+      transform: rotate(9deg);
+    }
+
+    .sticker.two {
+      left: -22px;
+      bottom: 67px;
+      transform: rotate(-9deg);
+      background: #faf8ef;
+    }
+
+    .art-bottom {
+      position: absolute;
+      bottom: 25px;
+      left: 27px;
+      right: 27px;
+      display: flex;
+      justify-content: space-between;
+      color: #332357;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* TICKER */
+
+    .ticker {
+      border-block: 1px solid var(--border);
+      padding: 21px 0;
+      overflow: hidden;
+    }
+
+    .ticker-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .ticker span {
+      font: 700 23px "Barlow Condensed", sans-serif;
+      letter-spacing: 1px;
+      color: #cfccd6;
+    }
+
+    .ticker b {
+      color: var(--purple);
+      font-size: 16px;
+    }
+
+    /* SECTIONS */
+
+    section.content {
+      padding: 75px 0;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .section-label {
+      color: var(--purple);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font: 800 clamp(37px, 5vw, 54px)/1 "Barlow Condensed", sans-serif;
+      text-transform: uppercase;
+    }
+
+    .section-top p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 310px;
+    }
+
+    /* FILTERS */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .filter {
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 9px 17px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .filter[aria-pressed="true"] {
+      background: var(--lime);
+      color: #202214;
+      border-color: var(--lime);
+      font-weight: 700;
+    }
+
+    /* GAMES */
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .game {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--panel);
+      transition: transform .2s;
+    }
+
+    .game:hover {
+      transform: translateY(-5px);
+    }
+
+    .game[hidden] {
+      display: none;
+    }
+
+    .game-art {
+      height: 215px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .game-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 50%, #0005);
+    }
+
+    .roblox {
+      background: radial-gradient(ellipse at top right, #ffb186, transparent), #b85c45;
+    }
+
+    .minecraft {
+      background: linear-gradient(145deg, #beddb0, #4e9b71);
+    }
+
+    .fortnite {
+      background: radial-gradient(ellipse at top, #b7a4ff, transparent), #6654b3;
+    }
+
+    .game-symbol {
+      font: 900 95px "Barlow Condensed", sans-serif;
+      color: #fff;
+      text-shadow: 7px 9px 0 #0002;
+      transform: rotate(-10deg);
+      transition: transform .3s;
+    }
+
+    .game:hover .game-symbol {
+      transform: rotate(-4deg) scale(1.08);
+    }
+
+    .roblox .game-symbol {
+      width: 85px;
+      height: 85px;
+      border: 26px solid #fff;
+      transform: rotate(-22deg);
+      box-shadow: 8px 8px 0 #0002;
+    }
+
+    .minecraft .game-symbol {
+      width: 102px;
+      height: 102px;
+      background: #79543d;
+      border-top: 30px solid #84bf53;
+      box-shadow: inset -25px 0 #0002, 9px 9px 0 #0002;
+    }
+
+    .game-tag {
+      position: absolute;
+      z-index: 1;
+      top: 16px;
+      left: 16px;
+      padding: 6px 9px;
+      border-radius: 4px;
+      background: #10101480;
+      color: white;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .game-art > span:last-child {
+      position: absolute;
+      z-index: 1;
+      bottom: 16px;
+      left: 18px;
+      font: 800 30px "Barlow Condensed", sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .game-info {
+      padding: 21px;
+    }
+
+    .game-info h3 {
+      font-size: 16px;
+      margin-bottom: 9px;
+    }
+
+    .game-info p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .game-footer {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--purple);
+    }
+
+    /* PLATFORMS */
+
+    .platforms {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .platform {
+      padding: 28px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 10px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .platform:hover {
+      border-color: var(--purple);
+      transform: translateY(-4px);
+    }
+
+    .platform-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      margin-bottom: 27px;
+    }
+
+    .youtube {
+      background: #ff424222;
+      color: #ff6464;
+    }
+
+    .tiktok {
+      background: #76ebe522;
+      color: #76ebe5;
+    }
+
+    .twitch {
+      background: #a28aff22;
+      color: var(--purple);
+    }
+
+    .platform h3 {
+      font: 700 29px "Barlow Condensed", sans-serif;
+    }
+
+    .platform p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 12px 0 25px;
+    }
+
+    .platform-link {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      border-top: 1px solid var(--border);
+      padding-top: 55px;
+      margin-top: 65px;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* COMMUNITY */
+
+    .community {
+      margin: 10px 0 70px;
+      padding: 48px;
+      background: var(--lime);
+      color: #1a1c13;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .community p {
+      font-size: 13px;
+      margin-top: 13px;
+      line-height: 1.7;
+    }
+
+    .community .button {
+      flex-shrink: 0;
+      background: #191b14;
+      color: white;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 29px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer p,
+    footer a {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 23px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        gap: 35px;
+      }
+
+      .hero-art {
+        min-height: 380px;
+      }
+
+      .games,
+      .platforms {
+        gap: 12px;
+      }
+
+      .platform {
+        padding: 22px;
+      }
+
+      .sticker.one {
+        right: -8px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        height: 73px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: #19191f;
+        padding: 25px;
+        border-bottom: 1px solid var(--border);
+        align-items: stretch;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .hero {
+        padding: 48px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      h1 {
+        font-size: clamp(76px, 16vw, 112px);
+      }
+
+      .hero-art {
+        min-height: 380px;
+        margin: 0 10px 10px;
+      }
+
+      .controller {
+        max-width: 420px;
+      }
+
+      .ticker-inner {
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .ticker span {
+        font-size: 18px;
+      }
+
+      .ticker b:last-child,
+      .ticker span:last-child {
+        display: none;
+      }
+
+      section.content {
+        padding: 48px 0;
+      }
+
+      .section-top {
+        align-items: start;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .games,
+      .platforms,
+      .about {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .game-art {
+        height: 235px;
+      }
+
+      .platform {
+        padding: 26px;
+      }
+
+      .platform-icon {
+        margin-bottom: 18px;
+      }
+
+      .about {
+        margin-top: 45px;
+        padding-top: 35px;
+      }
+
+      .community {
+        padding: 30px;
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 45px;
+      }
+
+      .footer-inner {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="nav wrap" aria-label="Main navigation">
+
+    <a class="logo" href="#" aria-label="JuJu Studios home">
+      <span class="logo-mark" aria-hidden="true">↗</span>
+      <span class="wordmark">
+        JUJU
+        <small>STUDIOS</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="navigation">
+      Menu ☰
+    </button>
+
+    <div class="nav-links" id="navigation">
+      <a href="#games">Our games</a>
+      <a href="#channels">The content</a>
+      <a href="#about">Who we are</a>
+      <a href="#community" class="button">
+        Join the squad <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-grid wrap">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">
+          <span class="dot"></span>
+          A studio built to play
+        </div>
+
+        <h1>
+          Big plays.<br>
+          Bad plans.<br>
+          <span>Good times.</span>
+        </h1>
+
+        <p>
+          Welcome to JuJu Studios — gaming videos, chaotic challenges,
+          unforgettable moments and a squad that's always ready for another game.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#channels">
+            <span aria-hidden="true">▶</span>
+            Find your next watch
+          </a>
+
+          <a class="button secondary" href="#games">
+            Explore the games
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="microcopy">
+          <div class="mini-icons" aria-hidden="true">
+            <span>▶</span>
+            <span>♪</span>
+            <span>↯</span>
+          </div>
+
+          YouTube. TikTok. Twitch. All JuJu.
+        </div>
+
+      </div>
+
+      <!-- HERO ART -->
+
+      <div class="hero-art">
+
+        <span class="art-title">
+          WELCOME TO JUJU STUDIOS
+        </span>
+
+        <svg
+          class="controller"
+          viewBox="0 0 500 360"
+          role="img"
+          aria-label="Illustrated gaming controller">
+
+          <defs>
+            <linearGradient id="shell" x1="0" y1="0" x2=".4" y2="1">
+              <stop stop-color="#41404e"/>
+              <stop offset="1" stop-color="#17171f"/>
+            </linearGradient>
+
+            <linearGradient id="pad" x2="0" y2="1">
+              <stop stop-color="#797187"/>
+              <stop offset="1" stop-color="#35313f"/>
+            </linearGradient>
+          </defs>
+
+          <path
+            d="M122 102Q134 72 179 86L203 104H296L325 86Q365 78 380 105L408 144 422 280Q420 326 386 314L327 262H174L118 313Q80 330 76 284L89 155Z"
+            fill="#101017"/>
+
+          <path
+            d="M110 133Q126 101 165 105L202 119H300L335 105Q374 104 389 140L412 276Q416 304 392 299L327 243H174L113 300Q87 309 88 281Z"
+            fill="url(#shell)"
+            stroke="#65616f"
+            stroke-width="2"/>
+
+          <rect
+            x="197"
+            y="133"
+            width="106"
+            height="66"
+            rx="14"
+            fill="#26242f"
+            stroke="#524b64"/>
+
+          <path
+            d="M145 141h21v22h22v21h-22v22h-21v-22h-22v-21h22z"
+            fill="#131219"
+            stroke="#655b78"
+            stroke-width="2"/>
+
+          <circle cx="199" cy="222" r="29"
+            fill="#111117"
+            stroke="#4c455b"
+            stroke-width="3"/>
+
+          <circle cx="199" cy="222" r="21"
+            fill="url(#pad)"/>
+
+          <circle cx="300" cy="222" r="29"
+            fill="#111117"
+            stroke="#4c455b"
+            stroke-width="3"/>
+
+          <circle cx="300" cy="222" r="21"
+            fill="url(#pad)"/>
+
+          <g fill="#dcff79" stroke="#17171f" stroke-width="4">
+            <circle cx="350" cy="144" r="13"/>
+            <circle cx="374" cy="169" r="13"/>
+            <circle cx="325" cy="169" r="13"/>
+            <circle cx="350" cy="194" r="13"/>
+          </g>
+
+          <circle cx="250" cy="219" r="8" fill="#a28aff"/>
+
+          <path
+            d="M226 248h48"
+            stroke="#dcff79"
+            stroke-width="4"
+            stroke-linecap="round"/>
+
+        </svg>
+
+        <span class="sticker one">
+          JUST ONE MORE GAME.
+        </span>
+
+        <span class="sticker two">
+          100% JUJU ENERGY ✳
+        </span>
+
+        <div class="art-bottom">
+          <span>PLAYER 01 — READY</span>
+          <span>LET'S MAKE SOME CHAOS ↗</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TICKER -->
+
+  <div class="ticker" aria-label="Games we play">
+    <div class="ticker-inner wrap">
+      <span>ROBLOX</span>
+      <b>✳</b>
+      <span>MINECRAFT</span>
+      <b>✳</b>
+      <span>FORTNITE</span>
+      <b>✳</b>
+      <span>AND WHATEVER'S NEXT</span>
+    </div>
+  </div>
+
+  <!-- GAMES -->
+
+  <section class="content wrap" id="games">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">
+          01 / Our playground
+        </div>
+
+        <h2>
+          Different worlds.<br>
+          Same squad.
+        </h2>
+      </div>
+
+      <p>
+        From the first block to the final circle.
+        There's always another adventure.
+      </p>
+    </div>
+
+    <div class="filters">
+
+      <button
+        class="filter"
+        data-filter="all"
+        aria-pressed="true">
+        All games
+      </button>
+
+      <button
+        class="filter"
+        data-filter="roblox"
+        aria-pressed="false">
+        Roblox
+      </button>
+
+      <button
+        class="filter"
+        data-filter="minecraft"
+        aria-pressed="false">
+        Minecraft
+      </button>
+
+      <button
+        class="filter"
+        data-filter="fortnite"
+        aria-pressed="false">
+        Fortnite
+      </button>
+
+    </div>
+
+    <div class="games">
+
+      <article class="game" data-game="roblox">
+
+        <div class="game-art roblox">
+
+          <span class="game-tag">
+            Unlimited possibilities
+          </span>
+
+          <div class="game-symbol"></div>
+
+          <span>ROBLOX</span>
+
+        </div>
+
+        <div class="game-info">
+
+          <h3>
+            If we can play it, we're in.
+          </h3>
+
+          <p>
+            Obby fails, hidden gems, challenges and
+            everything else we discover in Roblox.
+          </p>
+
+          <div class="game-footer">
+            <span>EXPLORE • CHALLENGE • REPEAT</span>
+            <span>↗</span>
+          </div>
+
+        </div>
+
+      </article>
+
+      <article class="game" data-game="minecraft">
+
+        <div class="game-art minecraft">
+
+          <span class="game-tag">
+            One more block
+          </span>
+
+          <div class="game-symbol"></div>
+
+          <span>MINECRAFT</span>
+
+        </div>
+
+        <div class="game-info">
+
+          <h3>
+            Small blocks. Huge ideas.
+          </h3>
+
+          <p>
+            Survival stories, ambitious builds,
+            adventures and questionable creeper encounters.
+          </p>
+
+          <div class="game-footer">
+            <span>BUILD • SURVIVE • DISCOVER</span>
+            <span>↗</span>
+          </div>
+
+        </div>
+
+      </article>
+
+      <article class="game" data-game="fortnite">
+
+        <div class="game-art fortnite">
+
+          <span class="game-tag">
+            Drop in with us
+          </span>
+
+          <div class="game-symbol">F</div>
+
+          <span>FORTNITE</span>
+
+        </div>
+
+        <div class="game-info">
+
+          <h3>
+            The drop is just the beginning.
+          </h3>
+
+          <p>
+            Clutch finishes, creative maps and
+            squad moments worth turning into highlights.
+          </p>
+
+          <div class="game-footer">
+            <span>DROP • SQUAD UP • WIN</span>
+            <span>↗</span>
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- CHANNELS -->
+
+  <section class="content wrap" id="channels">
+
+    <div class="section-top">
+
+      <div>
+        <div class="section-label">
+          02 / Pick your platform
+        </div>
+
+        <h2>
+          Same energy.<br>
+          Every screen.
+        </h2>
+      </div>
+
+      <p>
+        Watch videos, catch quick clips,
+        or hang out while it all happens live.
+      </p>
+
+    </div>
+
+    <div class="platforms">
+
+      <a
+        class="platform"
+        href="https://www.youtube.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <div class="platform-icon youtube">
+          ▶
+        </div>
+
+        <h3>YouTube</h3>
+
+        <p>
+          Full gaming videos, challenges,
+          adventures and the best JuJu moments.
+        </p>
+
+        <span class="platform-link">
+          Watch the videos
+          <span>↗</span>
+        </span>
+
+      </a>
+
+      <a
+        class="platform"
+        href="https://www.tiktok.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <div class="platform-icon tiktok">
+          ♪
+        </div>
+
+        <h3>TikTok</h3>
+
+        <p>
+          Maximum chaos. Minimum runtime.
+          Quick laughs and wild clips.
+        </p>
+
+        <span class="platform-link">
+          Catch the clips
+          <span>↗</span>
+        </span>
+
+      </a>
+
+      <a
+        class="platform"
+        href="https://www.twitch.tv/"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        <div class="platform-icon twitch">
+          ↯
+        </div>
+
+        <h3>Twitch</h3>
+
+        <p>
+          Unscripted gameplay, live streams
+          and the JuJu community.
+        </p>
+
+        <span class="platform-link">
+          Hang out live
+          <span>↗</span>
+        </span>
+
+      </a>
+
+    </div>
+
+    <!-- ABOUT -->
+
+    <div class="about" id="about">
+
+      <div>
+
+        <div class="section-label">
+          03 / Behind the usernames
+        </div>
+
+        <h2>
+          Friends first.<br>
+          Creators always.
+        </h2>
+
+      </div>
+
+      <p>
+        JuJu Studios is a gaming studio built around a simple idea:
+        games are better when you share them. We turn close calls,
+        unexpected wins, funny moments and spectacular fails into
+        content you can be part of.
+
+        No perfect runs required.
+        Just creativity, curiosity and a squad that's ready to go again.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- COMMUNITY -->
+
+  <section class="community wrap" id="community">
+
+    <div>
+
+      <h2>
+        Your squad is right here.
+      </h2>
+
+      <p>
+        Bring your wild ideas, your favorite games,
+        and your best "one more round."
+      </p>
+
+    </div>
+
+    <a class="button" href="#channels">
+      Find your platform
+      <span>↗</span>
+    </a>
+
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="footer-inner wrap">
+
+    <a class="logo" href="#" aria-label="JuJu Studios home">
+
+      <span class="logo-mark">
+        ↗
+      </span>
+
+      <span class="wordmark">
+        JUJU
+        <small>STUDIOS</small>
+      </span>
+
+    </a>
+
+    <p>
+      © <span id="year"></span> JuJu Studios.
+      Made for the next round.
+    </p>
+
+    <div class="footer-links">
+      <a href="#games">Games</a>
+      <a href="#channels">Channels</a>
+      <a href="#about">About</a>
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+  /* Automatic year */
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+  /* Mobile menu */
+
+  const menuButton =
+    document.querySelector(".menu-toggle");
+
+  const navigation =
+    document.getElementById("navigation");
+
+
+  function closeMenu() {
+    navigation.classList.remove("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+  }
+
+
+  menuButton.addEventListener("click", () => {
+
+    const open =
+      navigation.classList.toggle("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+
+  });
+
+
+  navigation.querySelectorAll("a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        closeMenu
+      );
+
+    });
+
+
+  document.addEventListener("keydown", event => {
+
+    if (
+      event.key === "Escape" &&
+      navigation.classList.contains("open")
+    ) {
+
+      closeMenu();
+      menuButton.focus();
+
+    }
+
+  });
+
+
+  /* Game filters */
+
+  const filters =
+    document.querySelectorAll(".filter");
+
+  const games =
+    document.querySelectorAll(".game");
+
+
+  filters.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      filters.forEach(filter => {
+
+        filter.setAttribute(
+          "aria-pressed",
+          String(filter === button)
+        );
+
+      });
+
+
+      games.forEach(game => {
+
+        game.hidden =
+          button.dataset.filter !== "all" &&
+          game.dataset.game !== button.dataset.filter;
+
+      });
+
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
